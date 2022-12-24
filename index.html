@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/output.css">
+    <title>Test Sajah</title>
+</head>
+<body>
+    <h1 class="text-3xl font-semibold ml-64">Hitung Berat Badan Ideal Anda</h1>
+    <div class="justify-center items-center h-screen w-screen">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                    Masukkan Nama Anda
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nama" type="text" placeholder="Nama" >
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    Masukkan Berat Badan Anda
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="berat" type="number" placeholder="Berat Badan">
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    Masukkan Tinggi Badan Anda
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="tinggi" type="number" placeholder="Tinggi Badan">
+            </div>
+            <!-- radio input laki laki / perempuan -->
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    Jenis Kelamin
+                </label>
+                <input type="radio" id="laki-laki" name="radioLaki" value="lakilaki">
+                <label for="laki-laki">Laki-laki</label><br>
+                <input type="radio" id="perempuan" name="radioLaki" value="perempuan">
+                <label for="perempuan">Perempuan</label><br>
+            </div>
+            <!-- button submit -->
+            <div class="flex items-center justify-between">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" id="submit">
+                    Hitung Berat Badan
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const hitung = document.getElementById('submit');
+        hitung.addEventListener('click', function(){
+            const nama = document.getElementById('nama').value;
+            const berat = document.getElementById('berat').value;
+            const tinggi = document.getElementById('tinggi').value;
+            const laki = document.getElementById('laki-laki').value;
+            const perempuan = document.getElementById('perempuan').value;
+            const beratIdealLakiLaki = (tinggi - 100) - ((tinggi - 100) * (10 / 100));
+            const beratIdealPerempuan = (tinggi - 100) - ((tinggi - 100) * (15 / 100));
+            if (nama == '' || berat == '' || tinggi == '') {
+                alert('Data tidak boleh kosong');
+            } else if (laki == 'laki-laki') {
+                if (berat > beratIdealLakiLaki) {
+                    alert('Nama : ' + nama + ' Berat Badan Anda : ' + berat + ' Kg' + ' Berat Badan Ideal Anda : ' + beratIdealLakiLaki + ' Kg' + ' Status : Anda Overweight');
+                } else if (berat < beratIdealLakiLaki) {
+                    alert('Nama : ' + nama + ' Berat Badan Anda : ' + berat + ' Kg' + ' Berat Badan Ideal Anda : ' + beratIdealLakiLaki + ' Kg' + ' Status : Anda Underweight');
+                } else {
+                    alert('Nama : ' + nama + ' Berat Badan Anda : ' + berat + ' Kg' + ' Berat Badan Ideal Anda : ' + beratIdealLakiLaki + ' Kg' + ' Status : Anda Normal');
+                }
+            } else if (perempuan == 'perempuan') {
+                if (berat > beratIdealPerempuan) {
+                    alert('Nama : ' + nama + ' Berat Badan Anda : ' + berat + ' Kg' + ' Berat Badan Ideal Anda : ' + beratIdealPerempuan + ' Kg' + ' Status : Anda Overweight');
+                } else if (berat < beratIdealPerempuan) {
+                    alert('Nama : ' + nama + ' Berat Badan Anda : ' + berat + ' Kg' + ' Berat Badan Ideal Anda : ' + beratIdealPerempuan + ' Kg' + ' Status : Anda Underweight');
+                } else {
+                    alert('Nama : ' + nama + ' Berat Badan Anda : ' + berat + ' Kg' + ' Berat Badan Ideal Anda : ' + beratIdealPerempuan + ' Kg' + ' Status : Anda Normal');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
